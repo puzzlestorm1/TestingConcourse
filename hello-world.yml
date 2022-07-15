@@ -1,13 +1,21 @@
+resources:
+- name: repo
+  type: git
+  source:
+    uri: /Users/awhite102/Training/concourse/.git/
+
 jobs:
-- name: hello-world-job
-  plan:
-  - task: hello-world-task
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: busybox
-      run:
-        path: echo
-        args: ["Hello world!"]
+  - name: hello-world-job
+    plan:
+      - get: repo
+        trigger: true
+      - task: hello-world-task
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: busybox
+          run:
+            path: echo
+            args: ["Hello world!"]
