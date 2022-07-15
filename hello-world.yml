@@ -2,7 +2,7 @@ resources:
 - name: repo
   type: git
   source:
-    uri: /Users/awhite102/Training/concourse/.git/
+    uri: /Users/awhite102/Training/concourse/.git
 
 jobs:
   - name: hello-world-job
